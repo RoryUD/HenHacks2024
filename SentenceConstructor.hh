@@ -110,6 +110,7 @@ int SentenceConstructor::getSize(){ return size;}
 int SentenceConstructor::getWordBankSize(){ return wordBankSize;}
 WordBlock SentenceConstructor::getWordAtIndex(int index) { return words[index];}
 WordBlock SentenceConstructor::getWordAtIndexInBank(int index) { return wordBank[index];}
+
 /* Adds word to end of sentece block, increases size by 1
  */
 void SentenceConstructor::addBlock(WordBlock word)
@@ -122,6 +123,10 @@ void SentenceConstructor::addBlock(WordBlock word)
  */
 void SentenceConstructor::removeBlock(WordBlock word)
 {
+	if(size <= 0)
+	{
+		return;
+	}
 	for(int i = 0; i<size; i++)
 	{
 		if(words[i].getContent() == word.getContent())
@@ -144,11 +149,15 @@ void SentenceConstructor::addBlockToBank(WordBlock word)
  */
 void SentenceConstructor::removeBlockFromBank(WordBlock word)
 {
+	if(wordBankSize <= 0)
+	{
+		return;
+	}
 	for(int i = 0; i<wordBankSize; i++)
 	{
 		if(wordBank[i].getContent() == word.getContent())
 		{
-			wordBank.erase(words.begin()+i);
+			wordBank.erase(wordBank.begin()+i);
 			setWordBankSize(wordBankSize-1);
 		}
 	}
@@ -184,11 +193,17 @@ void SentenceConstructor::swapBlocks(int blockOne, int blockTwo)
 	words[blockTwo] = temp;
 }
 
+
+
 /* Gets all the block parts into one full string
  * Adds a space in between each block
  */
 string SentenceConstructor::getSentenceAsString()
 {
+	if(size <= 0)
+	{
+		return "";
+	}
 	string fullSentence;
 	for(int i = 0; i<size; i++)
 	{
@@ -203,6 +218,10 @@ string SentenceConstructor::getSentenceAsString()
  */
 string SentenceConstructor::getWordBankAsString()
 {
+	if(wordBankSize <= 0)
+	{
+		return "";
+	}
 	string fullSentence;
 	for(int i = 0; i<wordBankSize; i++)
 	{

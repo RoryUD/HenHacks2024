@@ -65,7 +65,7 @@ int main(int argc, char* argv[])
 	
 	//*/
 	//Actual Setences
-	///*
+	/*
 	int num1;
 	int num2;
 	int decision;
@@ -74,32 +74,43 @@ int main(int argc, char* argv[])
 	WordBlock sentence1Word0 = 		WordBlock("A good computer scientist", 0);
 	WordBlock sentence1Word1Bad = 	WordBlock("does his or her", 1, 0);
 	WordBlock sentence1Word1Ok = 	WordBlock("does their", 1, 1);
+	WordBlock sentence1Word1Ok2 = 	WordBlock("does ones", 1, 2);
 	WordBlock sentence1Word1Good = 	WordBlock("does the", 1, 2);
 	WordBlock sentence1Word2 = 		WordBlock("job efficently.", 2);
 	SentenceConstructor sentence1 = SentenceConstructor();
 	sentence1.addBlock(sentence1Word0);
 	sentence1.addBlock(sentence1Word1Bad);
 	sentence1.addBlockToBank(sentence1Word1Ok);
+	sentence1.addBlockToBank(sentence1Word1Ok2);
 	sentence1.addBlockToBank(sentence1Word1Good);
 	sentence1.addBlock(sentence1Word2);
-	while(!sentence1.isInOrder() || !sentence1.containedNoBad())
+	while(!sentence1.isInOrder() || !sentence1.containedNoBad() || sentence1.getSize() != targetSize)
 	{
 		cout << "Current Sentence: " << sentence1.getSentenceAsString() << endl;
+		cout << "Word Bank: " << sentence1.getWordBankAsString() << endl;
 		if (sentence1.isInOrder())
 		{
-			cout << "Is In Order!" << endl;
+			cout << "Is In Order! 	";
 		}
 		else
 		{
-			cout << "Is Not In Order!" << endl;
+			cout << "Is Not In Order! 	";
 		}
 		if (sentence1.containedNoBad())
 		{
-			cout << "Contains No Bads!" << endl;
+			cout << "Contains No Bads! 		";
 		}
 		else
 		{
-			cout << "Contains Bads!" << endl;
+			cout << "Contains Bads! 	";
+		}
+		if (sentence1.getSize() == targetSize)
+		{
+			cout << "Right Size!" << endl;;
+		}
+		else
+		{
+			cout << "Wrong Size!" << endl;
 		}
 		cout << "0: Swap 2 Blocks" << endl << "1: Remove a block" << endl << "2: Add a block from word bank" << endl;
 		cin >> decision;
@@ -115,20 +126,41 @@ int main(int argc, char* argv[])
 		{
 			cout << "Input block to remove" << endl;
 			cin >> num1;
-			sentence1.removeBlock(sentence1.getWordAtIndex(num1));
+			if(num1 >= sentence1.getSize())
+			{
+				cout << "Index out of bounds!" << endl;
+			}
+			else
+			{
+				sentence1.removeBlock(sentence1.getWordAtIndex(num1));
+			}
 		}
 		else if(decision == 2)
 		{
-			cout << "Input block to add" << endl;
-			cout << "Word Bank: " << sentence1.getWordBankAsString() << endl;
-			cin >> num1;
-			WordBlock temp = sentence1.getWordAtIndexInBank(num1);
-			sentence1.addBlock(temp);
-			sentence1.removeBlockFromBank(temp);
+			if(sentence1.getWordBankSize() <= 0)
+			{
+				cout << "No words in bank!" << endl;
+			}
+			else
+			{
+				cout << "Input block to add" << endl;
+				cin >> num1;
+				if(num1 < sentence1.getWordBankSize())
+				{
+					WordBlock temp = sentence1.getWordAtIndexInBank(num1);
+					sentence1.removeBlockFromBank(temp);
+					sentence1.addBlock(temp);
+				}
+				else
+				{
+					cout << "Index out of bounds!" << endl;
+				}
+			}
 		}
 		num1 = -1;
 		num2 = -1;
 	}
+	cout << sentence1.getSentenceAsString() << endl;
 	cout << "Completed Sentence 1!" << endl;
 	//*/
 	
