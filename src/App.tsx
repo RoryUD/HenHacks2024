@@ -1,37 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 function App(): JSX.Element {
-    const [message, setMessage] = useState("");
+    const [randomNumber, setRandomNumber] = useState<number | null>(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get("http://localhost:8080/api");
-
-                const { message } = response.data;
-
-                setMessage(message);
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
-
-        fetchData();
-
-    }, []);
+    const handleClick = () => {
+        axios.get("http://localhost:3000/homepage")
+            .then(response => {
+                const { randomNumber } = response.data;
+                setRandomNumber(randomNumber);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    };
 
     return (
         <div className="App">
             <h1>this is header text</h1>
             <header className="App-header">
-                {message ? message : "Loading..."}
+                UD CISC275 with React Hooks and TypeScript
             </header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload. Also im Alex Hoy, Hello World.
+                {randomNumber}
             </p>
             <Container>
                 <Row>
@@ -61,9 +56,12 @@ function App(): JSX.Element {
                     </Col>
                 </Row>
             </Container>
-            <Button onClick={() => console.log("Hello World!")}>
-                Log Hello World
+            <Button onClick={handleClick}>
+                Get Random Number from C++ Backend
             </Button>
+            {randomNumber !== null && (
+                <p>Random Number: {randomNumber}</p>
+            )}
         </div>
     );
 }
