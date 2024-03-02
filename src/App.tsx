@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import axios from "axios";
+
 function App(): JSX.Element {
+    const [message, setMessage] = useState("");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get("http://localhost:8080/api");
+
+                const { message } = response.data;
+
+                setMessage(message);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchData();
+
+    }, []);
+
     return (
         <div className="App">
             <h1>this is header text</h1>
             <header className="App-header">
-                UD CISC275 with React Hooks and TypeScript
+                {message ? message : "Loading..."}
             </header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
@@ -46,4 +67,5 @@ function App(): JSX.Element {
         </div>
     );
 }
+
 export default App;
