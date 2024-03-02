@@ -18,15 +18,6 @@ using namespace std;
  * 		
  *  	g++ main.cpp SentenceConstructor.hh -o main
  * 		main
- 
-all: main
-
-main: SentenceConstructor.hh main.cpp
-	g++ -std=c++11 main.cpp -o main
-
-clean: 
-	/bin/rm -rf *.o *~ main
- 
  */
 
 class WordBlock
@@ -63,23 +54,90 @@ int WordBlock::getPlaceOrder(){ return placeOrder;}
 class SentenceConstructor
 {
 public:
-	SentenceConstructor(int); 	//Constructors
+	SentenceConstructor(); 			//Constructors
 	void setSize(int);
 	int getSize();
+	void addBlock(WordBlock);		//Appends word
+	string getSentenceAsString(); 	//Gets all blocks in a row as full sentence
+	bool isInOrder();				//Validates the proper order 
+	void swapBlocks(int, int);		//Swaps two blocks
 private:
-	int size;					//How many blocks are in the sentence 
-	vector<vector<WordBlock>> words;
+	int size;						//How many blocks are in the sentence 
+	vector<WordBlock> words; 		//Vector array of blocks 
 };
 //Constructors
-SentenceConstructor::SentenceConstructor(int num)
+SentenceConstructor::SentenceConstructor()
 {
-	size = num;
-	words = vector<vector<WordBlock>>(size);
+	size = 0;
 }
 //Setters and Getters
 void SentenceConstructor::setSize(int num){ size = num;}
 int SentenceConstructor::getSize(){ return size;}
-
-
+/* Adds word to end of sentece block, increases size by 1
+ */
+void SentenceConstructor::addBlock(WordBlock word)
+{
+	words.push_back(word);
+	setSize(size+1);
+}
+/* Gets all the block parts into one full string
+ * Adds a space in between each block
+ */
+string SentenceConstructor::getSentenceAsString()
+{
+	string fullSentence;
+	for(int i = 0; i<size; i++)
+	{
+		fullSentence.append(words[i].getContent());
+		fullSentence.append(" ");
+	}
+	fullSentence.pop_back();
+	return fullSentence;
+}
+/* Validates all the blocks are in the right order
+ * If sentence is empty, return true
+ * Assumes first block is at 0
+ */
+bool SentenceConstructor::isInOrder()
+{
+	bool isInOrder = true;
+	for(int i = 0; i<size; i++)
+	{
+		if(words[i].getPlaceOrder() != i)
+		{
+			isInOrder = false;
+		}
+	}
+	return isInOrder;
+}
+/* Takes two block numbers and swaps their place 
+ * Checks to make sure the numbers are different and the blocks exists
+ */
+void SentenceConstructor::swapBlocks(int blockOrderOne, int blockOrderTwo)
+{
+	int firstBlockLocation = -1;
+	int secondBlockLocation = -1;
+	//Gets the location of the two blocks in the array 
+	for(int i = 0; i<size; i++)
+	{
+		if(words[i].getPlaceOrder() == blockOrderOne)
+		{
+			firstBlockLocation = i;
+		}
+		if(words[i].getPlaceOrder() == blockOrderTwo)
+		{
+			secondBlockLocation = i;
+		}
+	}
+	//If given bad indexes, or the same index, do nothing 
+	if(firstBlockLocation == secondBlockLocation || firstBlockLocation == -1 || secondBlockLocation == -1)
+	{
+		return;
+	}
+	//Swaps the blocks 
+	WordBlock temp = words[firstBlockLocation];
+	words[firstBlockLocation] = words[secondBlockLocation];
+	words[secondBlockLocation] = temp;
+}
 
 #endif
