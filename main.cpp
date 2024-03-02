@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include "SentenceConstructor.hh"
 
 using namespace std;
 
