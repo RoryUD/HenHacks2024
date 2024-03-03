@@ -8,16 +8,16 @@
 
 using namespace std; 
 
-/*
- * To Do:
+/* 	To Do:
  * 	Back End:
  * 		Replace() for word bank (swaps bank and sentence wordBlocks)
  * 		Create 10 ish sentences
  * 		Add progression through the sentences
  * 		Hint Button (?)
  * 	Front End:
- * 		Make blocks be moveable (drag and drop)
- * 		Have word bank of moveable blocks
+ * 		Reset Button for each sentence
+ * 		Make multiple examples 
+ * 		Give guidance and example text 
  * 		Make it look pretty 
  * 	Compiler Call: 
  *  	g++ main.cpp SentenceConstructor.hh -o main
@@ -83,7 +83,8 @@ public:
 	void removeBlock(WordBlock); 			//Removes the given word block 
 	void addBlockToBank(WordBlock); 		//Adds block to the word bank
 	void removeBlockFromBank(WordBlock); 	//Removes block from the word bank
-	void swapBlocks(int, int);				//Swaps two blocks
+	void swapBlocks(int, int);				//Swaps two blocks in sentence
+	void swapBlockFromBank(int, int);		//Swaps block from sentence and bank
 	
 	string getSentenceAsString(); 			//Gets all blocks in a row as full sentence
 	string getWordBankAsString(); 			//Gets all word bank blocks numbered in string
@@ -175,6 +176,18 @@ void SentenceConstructor::swapBlocks(int blockOne, int blockTwo)
 	WordBlock temp = words[blockOne];
 	words[blockOne] = words[blockTwo];
 	words[blockTwo] = temp;
+}
+/* Swaps a block from sentence and from bank
+ */
+void SentenceConstructor::swapBlockFromBank(int sentenceLocation, int bankLocation)
+{
+	if(sentenceLocation >= size || bankLocation >= wordBankSize || bankLocation < 0 || sentenceLocation < 0)
+	{
+		return;
+	}
+	WordBlock temp = words[sentenceLocation];
+	words[sentenceLocation] = wordBank[bankLocation];
+	wordBank[bankLocation] = temp;
 }
 
 /* Gets all the block parts into one full string
