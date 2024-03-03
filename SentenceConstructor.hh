@@ -10,9 +10,9 @@ using namespace std;
 
 /* 	To Do:
  * 	Back End:
- * 		Create 5 ish sentences
+ * 		Create around 5 sentences
  * 	Front End:
- * 		Make multiple examples 
+ * 		Make multiple drag / drop areas with corrosponding reset buttons  
  * 		Give guidance and example text before every widgit list 
  * 		Make it look pretty 
  * 	Compiler Call: 
