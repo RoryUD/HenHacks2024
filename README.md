@@ -4,7 +4,7 @@ HenHacks submission for 2024
 Team Members and Emails:
 Rory Jordan roryj@udel.edu
 Alex Hoy aghoy@udel.edu
-Dustin Trieu 
+Dustin Trieu dtrieu@udel.edu
 
 Submitting for:
 CS Educational Technology Hack
