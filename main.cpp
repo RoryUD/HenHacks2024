@@ -152,6 +152,14 @@ int main(int argc, char* argv[])
 	cout << "Here is the first sentence:" << endl;
 	cout << "---------------------------" << endl;
 	//Setence 1
+	/*
+				A good computer scientist 
+				does his or her
+				does their
+				does ones
+				does the
+				job efficently
+	*/
 	targetSize = 3;
 	WordBlock sentence1Word0 = WordBlock("A good computer scientist", 0);
 	WordBlock sentence1Word1Bad = WordBlock("does his or her", 1, 0);
@@ -169,6 +177,19 @@ int main(int argc, char* argv[])
 	validatesString(sentence1, targetSize);
 	cout << "Completed Sentence 1!" << endl;
 	//Sentence 2 
+	/*
+	As you can see, you can remove gendered language in various ways
+	This next example is when a singular person is talking about multiple people
+	In this case, it is best to use they/them/their to refer to just a single group
+	
+	A pet owner
+	Pet owners
+	should treat
+	their pets
+	his or her pets
+	well.
+	
+	*/
 	cout << "As you can see, you can remove gendered language in various ways" << endl;
 	cout << "This next example is when a singular person is talking about multiple people" << endl;
 	cout << "In this case, it is best to use they/them/their to refer to just a single group" << endl;
