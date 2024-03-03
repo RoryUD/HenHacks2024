@@ -12,6 +12,7 @@ using namespace std;
  * 	Back End:
  * 		Create around 5 sentences
  * 	Front End:
+ * 		Make page work on local 
  * 		Make multiple drag / drop areas with corrosponding reset buttons  
  * 		Give guidance and example text before every widgit list 
  * 		Make it look pretty 
