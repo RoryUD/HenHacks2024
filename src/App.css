@@ -57,6 +57,13 @@
     text-align: center;
     flex-direction: row;
     gap: 10px;
+    .Button{
+        align: right;
+    }
+}
+
+.button-container {
+    margin-left: auto;
 }
 
 @keyframes App-logo-spin {

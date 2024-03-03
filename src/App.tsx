@@ -3,6 +3,8 @@ import "./App.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
 function App(): JSX.Element {
     const [widgets, setWidgets] = useState<string[]>([]);
+    const [widgets2, setWidgets2] = useState<string[]>([]);
+    const [widgets3, setWidgets3] = useState<string[]>([]);
 
     function handleOnDrag(e: React.DragEvent, widgetType: string){
         e.dataTransfer.setData("widgetType", widgetType);
@@ -17,6 +19,21 @@ function App(): JSX.Element {
     function handleDragOver(e: React.DragEvent){
         e.preventDefault();
     }
+
+    function removeAllWidgets() {
+        setWidgets([]);
+    }
+
+    function removeAllWidgets2() {
+        setWidgets2([]);
+    }
+
+    function handleOnDrop2(e:React.DragEvent){
+        const widgetType = e.dataTransfer.getData("widgetType") as string;
+        console.log("widgetType", widgetType);
+            setWidgets2([...widgets2, widgetType]);
+    }
+
 
     return (
         <div className="App">
@@ -57,6 +74,50 @@ function App(): JSX.Element {
                         {widget}
                     </div>
                 ))}
+                <div className="button-container">
+                    <Button onClick={removeAllWidgets}>
+                        Remove All Widgets
+                    </Button>
+                </div>
+            </div>
+            
+
+            
+            <div className="widgets2">
+                <div
+                    className="widget2"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Widget D")}
+                >
+                    Widget D
+                </div>
+                <div
+                    className="widget2"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Widget E")}
+                >
+                    Widget E
+                </div>
+                <div
+                    className="widget2"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Widget F")}
+                >
+                    Widget F
+                </div>
+            </div>
+            <div className="page" onDrop={handleOnDrop2} onDragOver={handleDragOver}>
+                Drop Here: 
+                {widgets2.map((widget2, index) => (
+                    <div className="dropped-widget" key={index}>
+                        {widget2}
+                    </div>
+                ))}
+                <div className="button-container">
+                    <Button onClick={removeAllWidgets2}>
+                        Remove All Widgets
+                    </Button>
+                </div>
             </div>
             
             <Button onClick={() => console.log("Hello World!")}>
