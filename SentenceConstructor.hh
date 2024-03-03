@@ -8,16 +8,12 @@
 
 using namespace std; 
 
-/*
- * To Do:
+/* 	To Do:
  * 	Back End:
- * 		Replace() for word bank 
- * 		Create 10 ish sentences
- * 		Add progression through the sentences
- * 		Hint Button (?)
+ * 		Create 5 ish sentences
  * 	Front End:
- * 		Make blocks be moveable (drag and drop)
- * 		Have word bank of moveable blocks
+ * 		Make multiple examples 
+ * 		Give guidance and example text before every widgit list 
  * 		Make it look pretty 
  * 	Compiler Call: 
  *  	g++ main.cpp SentenceConstructor.hh -o main
@@ -71,27 +67,47 @@ int WordBlock::getBadOkGood(){ return badOkGood;}
 class SentenceConstructor
 {
 public:
-	SentenceConstructor(); 			//Constructors
-	void setSize(int);
+	SentenceConstructor(); 					//Constructors
+	void setSize(int);						//Getters and Setters
+	void setWordBankSize(int);
 	int getSize();
-	void addBlock(WordBlock);		//Appends word
-	string getSentenceAsString(); 	//Gets all blocks in a row as full sentence
-	bool isInOrder();				//Validates the proper order 
-	bool containedNoBad(); 			//Validates no words are bad 
-	bool containedNoBadOrOk(); 		//Validates no words are bad or ok 
-	void swapBlocks(int, int);		//Swaps two blocks
+	int getWordBankSize();
+	WordBlock getWordAtIndex(int);			//Gets block at given index
+	WordBlock getWordAtIndexInBank(int);	//Gets block at given index
+	
+	void addBlock(WordBlock);				//Appends wordBlock to the end
+	void removeBlock(WordBlock); 			//Removes the given word block 
+	void addBlockToBank(WordBlock); 		//Adds block to the word bank
+	void removeBlockFromBank(WordBlock); 	//Removes block from the word bank
+	void swapBlocks(int, int);				//Swaps two blocks in sentence
+	void swapBlockFromBank(int, int);		//Swaps block from sentence and bank
+	
+	string getSentenceAsString(); 			//Gets all blocks in a row as full sentence
+	string getWordBankAsString(); 			//Gets all word bank blocks numbered in string
+	
+	bool isInOrder();						//Validates the proper order 
+	bool containedNoBad(); 					//Validates no words are bad 
+	bool containedNoBadOrOk(); 				//Validates no words are bad or ok 
 private:
-	int size;						//How many blocks are in the sentence 
-	vector<WordBlock> words; 		//Vector array of blocks 
+	int size;								//How many blocks are in the sentence 
+	vector<WordBlock> words; 				//Vector array of blocks 
+	int wordBankSize;						//How many blocks are in the word bank 
+	vector<WordBlock> wordBank; 			//Vector array of word bank blocks 
 };
 //Constructors
 SentenceConstructor::SentenceConstructor()
 {
 	size = 0;
+	wordBankSize = 0;
 }
 //Setters and Getters
 void SentenceConstructor::setSize(int num){ size = num;}
+void SentenceConstructor::setWordBankSize(int num){ wordBankSize = num;} 
 int SentenceConstructor::getSize(){ return size;}
+int SentenceConstructor::getWordBankSize(){ return wordBankSize;}
+WordBlock SentenceConstructor::getWordAtIndex(int index) { return words[index];}
+WordBlock SentenceConstructor::getWordAtIndexInBank(int index) { return wordBank[index];}
+
 /* Adds word to end of sentece block, increases size by 1
  */
 void SentenceConstructor::addBlock(WordBlock word)
@@ -99,11 +115,86 @@ void SentenceConstructor::addBlock(WordBlock word)
 	words.push_back(word);
 	setSize(size+1);
 }
+/* Removes a given wordBlock and adds it to the word bank 
+ * Compares based on the sentence content (make sure no duplicates when making blocks)
+ */
+void SentenceConstructor::removeBlock(WordBlock word)
+{
+	if(size <= 0)
+	{
+		return;
+	}
+	for(int i = 0; i<size; i++)
+	{
+		if(words[i].getContent() == word.getContent())
+		{
+			words.erase(words.begin()+i);
+			setSize(size-1);
+			addBlockToBank(word);
+		}
+	}
+}
+/* Adds word to end of Word Bank, increases size by 1
+ */
+void SentenceConstructor::addBlockToBank(WordBlock word)
+{
+	wordBank.push_back(word);
+	setWordBankSize(wordBankSize+1);
+}
+/* Removes a word from the word bank
+ * Reduces the word bank size by 1 as well
+ */
+void SentenceConstructor::removeBlockFromBank(WordBlock word)
+{
+	if(wordBankSize <= 0)
+	{
+		return;
+	}
+	for(int i = 0; i<wordBankSize; i++)
+	{
+		if(wordBank[i].getContent() == word.getContent())
+		{
+			wordBank.erase(wordBank.begin()+i);
+			setWordBankSize(wordBankSize-1);
+		}
+	}
+}
+/* Takes the index of two blocks and swaps them
+ */
+void SentenceConstructor::swapBlocks(int blockOne, int blockTwo)
+{
+	//If given bad indexes, or the same index, do nothing 
+	if(blockOne == blockTwo || blockOne >= size || blockTwo >= size || blockOne < 0 || blockTwo < 0)
+	{
+		return;
+	}
+	//Swaps the blocks 
+	WordBlock temp = words[blockOne];
+	words[blockOne] = words[blockTwo];
+	words[blockTwo] = temp;
+}
+/* Swaps a block from sentence and from bank
+ */
+void SentenceConstructor::swapBlockFromBank(int sentenceLocation, int bankLocation)
+{
+	if(sentenceLocation >= size || bankLocation >= wordBankSize || bankLocation < 0 || sentenceLocation < 0)
+	{
+		return;
+	}
+	WordBlock temp = words[sentenceLocation];
+	words[sentenceLocation] = wordBank[bankLocation];
+	wordBank[bankLocation] = temp;
+}
+
 /* Gets all the block parts into one full string
  * Adds a space in between each block
  */
 string SentenceConstructor::getSentenceAsString()
 {
+	if(size <= 0)
+	{
+		return "";
+	}
 	string fullSentence;
 	for(int i = 0; i<size; i++)
 	{
@@ -113,6 +204,26 @@ string SentenceConstructor::getSentenceAsString()
 	fullSentence.pop_back();
 	return fullSentence;
 }
+/* Gets the word bank as a string
+ * Adds a space in between each word, and numbers the words
+ */
+string SentenceConstructor::getWordBankAsString()
+{
+	if(wordBankSize <= 0)
+	{
+		return "";
+	}
+	string fullSentence;
+	for(int i = 0; i<wordBankSize; i++)
+	{
+		fullSentence.append(to_string(i)+". ");
+		fullSentence.append(wordBank[i].getContent());
+		fullSentence.append(" ");
+	}
+	fullSentence.pop_back();
+	return fullSentence;
+}
+
 /* Validates all the blocks are in the right order
  * If sentence is empty, return true
  * Assumes first block is at 0
@@ -158,35 +269,6 @@ bool SentenceConstructor::containedNoBadOrOk()
 		}
 	}
 	return allNotBadOrOk;
-}
-/* Takes two block numbers and swaps their place 
- * Checks to make sure the numbers are different and the blocks exists
- */
-void SentenceConstructor::swapBlocks(int blockOrderOne, int blockOrderTwo)
-{
-	int firstBlockLocation = -1;
-	int secondBlockLocation = -1;
-	//Gets the location of the two blocks in the array 
-	for(int i = 0; i<size; i++)
-	{
-		if(words[i].getPlaceOrder() == blockOrderOne)
-		{
-			firstBlockLocation = i;
-		}
-		if(words[i].getPlaceOrder() == blockOrderTwo)
-		{
-			secondBlockLocation = i;
-		}
-	}
-	//If given bad indexes, or the same index, do nothing 
-	if(firstBlockLocation == secondBlockLocation || firstBlockLocation == -1 || secondBlockLocation == -1)
-	{
-		return;
-	}
-	//Swaps the blocks 
-	WordBlock temp = words[firstBlockLocation];
-	words[firstBlockLocation] = words[secondBlockLocation];
-	words[secondBlockLocation] = temp;
 }
 
 #endif
