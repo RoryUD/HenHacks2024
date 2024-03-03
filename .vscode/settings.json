@@ -1,7 +1,8 @@
 {
-    "git.ignoreLimitWarning": true,
-    "C_Cpp.errorSquiggles": "disabled",
-    "files.associations": {
-        "ostream": "cpp"
-    }
+  "git.ignoreLimitWarning": true,
+  "C_Cpp.errorSquiggles": "disabled",
+  "files.associations": {
+    "ostream": "cpp"
+  },
+  "C_Cpp_Runner.msvcBatchPath": ""
 }
