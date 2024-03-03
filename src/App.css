@@ -29,6 +29,11 @@
     color: #61dafb;
 }
 
+p{
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
 .container {
     display: flex; 
     flex-wrap: start; 
@@ -36,9 +41,37 @@
     flex-flow: row wrap;
 }
 
+.widget{
+    background-color: lightblue;
+    border: 2px solid gray;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.widget2{
+    background-color: lightblue;
+    border: 2px solid gray;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.widget3{
+    background-color: lightblue;
+    border: 2px solid gray;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.widget4{
+    background-color: lightblue;
+    border: 2px solid gray;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
 .widgets {
     align-items: center;
-    gap: 10px;
+    gap: 20px;
     flex: 1;
     flex-direction: row;
     flex-flow: row wrap;
