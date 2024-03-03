@@ -65,8 +65,12 @@ function App(): JSX.Element {
             </header>
             <p >
                 This site is designed to teach you about gendered langauge!
+				<div>
 				You can move parts of sentences around to rewrite a give sentence to not include gendered language.
+				</div>
+				<div>
 				This first sentence is about removing gendered pronouns without having to rewrite the sentence fully.
+				</div>
 				<div>
 				Here is the first sentence: A good computer scientist does his or her job efficently
 				</div>
@@ -123,10 +127,16 @@ function App(): JSX.Element {
             </div>
             
             <p>
-                As you can see, you can remove gendered language in various ways
-				This next example is when a singular person is talking about multiple people
+                As you can see, you can remove gendered language in various ways.
+				<div>
+				This next example is when a singular person is talking about multiple people.
+				</div>
+				<div>
 				In this case, it is best to use they/them/their to refer to just a single group.
+				</div>
+				<div>
 				Here is the second sentence: A pet owner should treat his or her pets well.
+				</div>
             </p>
             
             <div className="widgets2">
