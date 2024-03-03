@@ -212,6 +212,25 @@ int main(int argc, char* argv[])
 	cout << "Completed Sentence 2!" << endl;
 	//Sentence 3
 	targetSize = 0;
+	/*
+	Make about 
+	Chairman -> Chairman
+	Congressman -> Representative
+	
+	Many words can be gendered in subtler ways, but can still be avoided.
+	For example, instead of "mankind" you can use "humankind".
+	Here is the third sentence: Anyone can write to his or her Congressman about important issues.
+	Anyone can write
+	to his or her
+	to their
+	Congressman
+	Representative
+	about important issues
+	*/
+	
+	/*
+	
+	*/
 	
 	return 1;
 }

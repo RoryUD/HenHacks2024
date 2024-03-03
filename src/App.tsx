@@ -198,29 +198,56 @@ function App(): JSX.Element {
             </div>
             
             <p>
-                Placeholder 
+                Many words can be gendered in subtler ways, but can still be avoided.
+				<div>
+				For example, instead of "mankind" you can use "humankind".
+				</div>
+				<div>
+				Here is the third sentence: Anyone can write to his or her Congressman about important issues.
+				</div>
             </p>
             <div className="widgets3">
                 <div
                     className="widget3"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget D")}
+                    onDragStart={(e) => handleOnDrag(e, "Anyone can write")}
                 >
-                    Widget D
+                    Anyone can write
                 </div>
                 <div
                     className="widget3"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget E")}
+                    onDragStart={(e) => handleOnDrag(e, "to his or her")}
                 >
-                    Widget E
+                    to his or her
                 </div>
                 <div
                     className="widget3"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget F")}
+                    onDragStart={(e) => handleOnDrag(e, "to their")}
                 >
-                    Widget F
+                    to their
+                </div>
+				<div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Congressman")}
+                >
+                    Congressman
+                </div>
+				<div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Representative")}
+                >
+                    Representative
+                </div>
+				<div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "about important issues")}
+                >
+                    about important issues
                 </div>
             </div>
             <div className="page" onDrop={handleOnDrop3} onDragOver={handleDragOver}>
