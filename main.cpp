@@ -152,6 +152,14 @@ int main(int argc, char* argv[])
 	cout << "Here is the first sentence:" << endl;
 	cout << "---------------------------" << endl;
 	//Setence 1
+	/*
+				A good computer scientist 
+				does his or her
+				does their
+				does ones
+				does the
+				job efficently
+	*/
 	targetSize = 3;
 	WordBlock sentence1Word0 = WordBlock("A good computer scientist", 0);
 	WordBlock sentence1Word1Bad = WordBlock("does his or her", 1, 0);
@@ -169,6 +177,19 @@ int main(int argc, char* argv[])
 	validatesString(sentence1, targetSize);
 	cout << "Completed Sentence 1!" << endl;
 	//Sentence 2 
+	/*
+	As you can see, you can remove gendered language in various ways
+	This next example is when a singular person is talking about multiple people
+	In this case, it is best to use they/them/their to refer to just a single group
+	
+	A pet owner
+	Pet owners
+	should treat
+	their pets
+	his or her pets
+	well.
+	
+	*/
 	cout << "As you can see, you can remove gendered language in various ways" << endl;
 	cout << "This next example is when a singular person is talking about multiple people" << endl;
 	cout << "In this case, it is best to use they/them/their to refer to just a single group" << endl;
@@ -191,6 +212,35 @@ int main(int argc, char* argv[])
 	cout << "Completed Sentence 2!" << endl;
 	//Sentence 3
 	targetSize = 0;
+	/*
+	Make about 
+	Chairman -> Chairman
+	Congressman -> Representative
+	
+	Many words can be gendered in subtler ways, but can still be avoided.
+	For example, instead of "mankind" you can use "humankind".
+	Here is the third sentence: Anyone can write to his or her Congressman about important issues.
+	Anyone can write
+	to his or her
+	to their
+	Congressman
+	Representative
+	about important issues
+	*/
+	
+	/*
+	Here is a final sentence that combines everything used so far.
+	
+	*/
+	
+	/*
+	Conclusion
+	
+	In conclusion, you can see the many ways gendered langauge is used in everyday communication.
+	When writing, you can use the techniques you learned above to make your writing more inclusive.
+	:)
+	
+	*/
 	
 	return 1;
 }

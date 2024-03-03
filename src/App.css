@@ -13,20 +13,34 @@
     }
 }
 
+h1{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
 .App-header {
     width: 100%;
-    background-color: #b563ec;
+    background-color: rgb(255, 239, 241);
     min-height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
 }
 
 .App-link {
     color: #61dafb;
+}
+
+body{
+    background-color: rgb(255, 239, 241);
+}
+
+p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .container {
@@ -36,7 +50,62 @@
     flex-flow: row wrap;
 }
 
+.widget{
+    background-color: lightcyan;
+    border: 2px solid gray;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.widget2{
+    background-color: lightcyan;
+    border: 2px solid gray;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.widget3{
+    background-color: lightcyan;
+    border: 2px solid gray;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
+.widget4{
+    background-color: lightcyan;
+    border: 2px solid gray;
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+
 .widgets {
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+    flex-direction: row;
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.widgets2 {
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    flex-direction: row;
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.widgets3 {
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    flex-direction: row;
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.widgets4 {
     align-items: center;
     gap: 10px;
     flex: 1;
@@ -53,7 +122,7 @@
     display: flex;
     border: 2px dashed gray;
     padding: 20px;
-    background-color: aqua;
+    background-color: lightcyan;
     text-align: center;
     flex-direction: row;
     gap: 10px;
@@ -61,6 +130,8 @@
         align: right;
     }
 }
+
+
 
 .button-container {
     margin-left: auto;

@@ -5,6 +5,7 @@ function App(): JSX.Element {
     const [widgets, setWidgets] = useState<string[]>([]);
     const [widgets2, setWidgets2] = useState<string[]>([]);
     const [widgets3, setWidgets3] = useState<string[]>([]);
+    const [widgets4, setWidgets4] = useState<string[]>([]);
 
     function handleOnDrag(e: React.DragEvent, widgetType: string){
         e.dataTransfer.setData("widgetType", widgetType);
@@ -28,43 +29,87 @@ function App(): JSX.Element {
         setWidgets2([]);
     }
 
+    function removeAllWidgets3() {
+        setWidgets3([]);
+    }
+
+    function removeAllWidgets4() {
+        setWidgets4([]);
+    }
+
     function handleOnDrop2(e:React.DragEvent){
         const widgetType = e.dataTransfer.getData("widgetType") as string;
         console.log("widgetType", widgetType);
             setWidgets2([...widgets2, widgetType]);
     }
 
+    function handleOnDrop3(e:React.DragEvent){
+        const widgetType = e.dataTransfer.getData("widgetType") as string;
+        console.log("widgetType", widgetType);
+            setWidgets3([...widgets2, widgetType]);
+    }
+
+    function handleOnDrop4(e:React.DragEvent){
+        const widgetType = e.dataTransfer.getData("widgetType") as string;
+        console.log("widgetType", widgetType);
+            setWidgets4([...widgets2, widgetType]);
+    }
+
+
 
     return (
         <div className="App">
             <h1>Gender Inclusive Language Examples</h1>
             <header className="App-header">
-                Interactive Examples to enhance language for diversity:
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Gay_Pride_Flag.svg/800px-Gay_Pride_Flag.svg.png" style={{width: 1600, height: 300}} alt="Pride Flag"></img>
             </header>
-            <p>
-                Placeholder Paragraph
+            <p >
+                This site is designed to teach you about gendered langauge!
+				<div>
+				You can move parts of sentences around to rewrite a give sentence to not include gendered language.
+				</div>
+				<div>
+				This first sentence is about removing gendered pronouns without having to rewrite the sentence fully.
+				</div>
+				<div>
+				Here is the first sentence: A good computer scientist does his or her job efficently
+				</div>
             </p>
             <div className="widgets">
                 <div
                     className="widget"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget A")}
+                    onDragStart={(e) => handleOnDrag(e, " A good computer scientist ")}
                 >
-                    Widget A
+                    A good computer scientist
                 </div>
                 <div
                     className="widget"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget B")}
+                    onDragStart={(e) => handleOnDrag(e, " does his or her ")}
                 >
-                    Widget B
+                    does his or her
                 </div>
                 <div
                     className="widget"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget C")}
+                    onDragStart={(e) => handleOnDrag(e, " does their ")}
                 >
-                    Widget C
+                    does their
+                </div>
+                <div
+                    className="widget"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, " does the ")}
+                >
+                    does the
+                </div>
+                <div
+                    className="widget"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, " job efficently ")}
+                >
+                    job efficently
                 </div>
             </div>
             <div className="page" onDrop={handleOnDrop} onDragOver={handleDragOver}>
@@ -76,34 +121,66 @@ function App(): JSX.Element {
                 ))}
                 <div className="button-container">
                     <Button onClick={removeAllWidgets}>
-                        Remove All Widgets
+                        Reset
                     </Button>
                 </div>
             </div>
             
-
+            <p>
+                As you can see, you can remove gendered language in various ways.
+				<div>
+				This next example is when a singular person is talking about multiple people.
+				</div>
+				<div>
+				In this case, it is best to use they/them/their to refer to just a single group.
+				</div>
+				<div>
+				Here is the second sentence: A pet owner should treat his or her pets well.
+				</div>
+            </p>
             
             <div className="widgets2">
                 <div
                     className="widget2"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget D")}
+                    onDragStart={(e) => handleOnDrag(e, "A pet owner")}
                 >
-                    Widget D
+                    A pet owner
                 </div>
                 <div
                     className="widget2"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget E")}
+                    onDragStart={(e) => handleOnDrag(e, "Pet owners")}
                 >
-                    Widget E
+                    Pet owners
                 </div>
                 <div
                     className="widget2"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget F")}
+                    onDragStart={(e) => handleOnDrag(e, "should treat")}
                 >
-                    Widget F
+                    should treat
+                </div>
+				<div
+                    className="widget2"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "their pets")}
+                >
+                    their pets
+                </div>
+				<div
+                    className="widget2"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "his or her pets")}
+                >
+                    his or her pets
+                </div>
+				<div
+                    className="widget2"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "well")}
+                >
+                    well
                 </div>
             </div>
             <div className="page" onDrop={handleOnDrop2} onDragOver={handleDragOver}>
@@ -115,14 +192,144 @@ function App(): JSX.Element {
                 ))}
                 <div className="button-container">
                     <Button onClick={removeAllWidgets2}>
-                        Remove All Widgets
+                        Reset
                     </Button>
                 </div>
             </div>
             
-            <Button onClick={() => console.log("Hello World!")}>
-                Log Hello World
-            </Button>
+            <p>
+                Many words can be gendered in subtler ways, but can still be avoided.
+				<div>
+				For example, instead of "mankind" you can use "humankind".
+				</div>
+				<div>
+				Here is the third sentence: Anyone can write to his or her Congressman about important issues.
+				</div>
+            </p>
+            <div className="widgets3">
+                <div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Anyone can write")}
+                >
+                    Anyone can write
+                </div>
+                <div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "to his or her")}
+                >
+                    to his or her
+                </div>
+                <div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "to their")}
+                >
+                    to their
+                </div>
+				<div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Congressman")}
+                >
+                    Congressman
+                </div>
+				<div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Representative")}
+                >
+                    Representative
+                </div>
+				<div
+                    className="widget3"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "about important issues")}
+                >
+                    about important issues
+                </div>
+            </div>
+            <div className="page" onDrop={handleOnDrop3} onDragOver={handleDragOver}>
+                Drop Here: 
+                {widgets3.map((widget3, index) => (
+                    <div className="dropped-widget" key={index}>
+                        {widget3}
+                    </div>
+                ))}
+                <div className="button-container">
+                    <Button onClick={removeAllWidgets3}>
+                        Reset
+                    </Button>
+                </div>
+            </div>
+
+            <p>
+                Here is a final sentence that combines everything used so far.
+				<div>
+					Does the policeman have a girlfriend?
+				</div>
+            </p>
+
+            <div className="widgets4">
+                <div
+                    className="widget4"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Does the policeman have a")}
+                >
+                    Does the policeman have a
+                </div>
+                <div
+                    className="widget4"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "Does the police officer have a")}
+                >
+                    Does the police officer have a
+                </div>
+                <div
+                    className="widget4"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "girlfriend?")}
+                >
+                    girlfriend?
+                </div>
+                <div
+                    className="widget4"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "wife?")}
+                >
+                    wife?
+                </div>
+                <div
+                    className="widget4"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "partner?")}
+                >
+                    partner?
+                </div>
+            </div>
+            <div className="page" onDrop={handleOnDrop4} onDragOver={handleDragOver}>
+                Drop Here: 
+                {widgets4.map((widget4, index) => (
+                    <div className="dropped-widget" key={index}>
+                        {widget4}
+                    </div>
+                ))}
+                <div className="button-container">
+                    <Button onClick={removeAllWidgets4}>
+                        Reset
+                    </Button>
+                </div>
+            </div>
+            <p style={{padding: 25}}>
+                In conclusion, you can see the many ways gendered langauge is used in everyday communication.
+				<div>
+				When writing, you can use the techniques you learned above to make your writing more inclusive.
+				</div>
+				<div>
+				:)
+				</div>
+            </p>
         </div>
     );
 }
