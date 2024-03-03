@@ -67,7 +67,9 @@ function App(): JSX.Element {
                 This site is designed to teach you about gendered langauge!
 				You can move parts of sentences around to rewrite a give sentence to not include gendered language.
 				This first sentence is about removing gendered pronouns without having to rewrite the sentence fully.
+				<div>
 				Here is the first sentence: A good computer scientist does his or her job efficently
+				</div>
             </p>
             <div className="widgets">
                 <div
@@ -115,7 +117,7 @@ function App(): JSX.Element {
                 ))}
                 <div className="button-container">
                     <Button onClick={removeAllWidgets}>
-                        Remove All Widgets
+                        Reset
                     </Button>
                 </div>
             </div>
@@ -123,7 +125,7 @@ function App(): JSX.Element {
             <p>
                 As you can see, you can remove gendered language in various ways
 				This next example is when a singular person is talking about multiple people
-				In this case, it is best to use they/them/their to refer to just a single group
+				In this case, it is best to use they/them/their to refer to just a single group.
 				Here is the second sentence: A pet owner should treat his or her pets well.
             </p>
             
@@ -180,7 +182,7 @@ function App(): JSX.Element {
                 ))}
                 <div className="button-container">
                     <Button onClick={removeAllWidgets2}>
-                        Remove All Widgets
+                        Reset
                     </Button>
                 </div>
             </div>
@@ -220,7 +222,7 @@ function App(): JSX.Element {
                 ))}
                 <div className="button-container">
                     <Button onClick={removeAllWidgets3}>
-                        Remove All Widgets
+                        Reset
                     </Button>
                 </div>
             </div>
@@ -261,7 +263,7 @@ function App(): JSX.Element {
                 ))}
                 <div className="button-container">
                     <Button onClick={removeAllWidgets4}>
-                        Remove All Widgets
+                        Reset
                     </Button>
                 </div>
             </div>
