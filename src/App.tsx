@@ -61,7 +61,7 @@ function App(): JSX.Element {
         <div className="App">
             <h1>Gender Inclusive Language Examples</h1>
             <header className="App-header">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Gay_Pride_Flag.svg/800px-Gay_Pride_Flag.svg.png" style={{width: 1600, height: 200}} alt="Pride Flag"></img>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Gay_Pride_Flag.svg/800px-Gay_Pride_Flag.svg.png" style={{width: 1600, height: 300}} alt="Pride Flag"></img>
             </header>
             <p >
                 This site is designed to teach you about gendered langauge!
