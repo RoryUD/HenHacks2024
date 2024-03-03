@@ -267,7 +267,7 @@ function App(): JSX.Element {
             <p>
                 Here is a final sentence that combines everything used so far.
 				<div>
-					A
+					Does the policeman have a girlfriend?
 				</div>
             </p>
 
@@ -275,23 +275,37 @@ function App(): JSX.Element {
                 <div
                     className="widget4"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget D")}
+                    onDragStart={(e) => handleOnDrag(e, "Does the policeman have a")}
                 >
-                    Widget D
+                    Does the policeman have a
                 </div>
                 <div
                     className="widget4"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget E")}
+                    onDragStart={(e) => handleOnDrag(e, "Does the police officer have a")}
                 >
-                    Widget E
+                    Does the police officer have a
                 </div>
                 <div
                     className="widget4"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget F")}
+                    onDragStart={(e) => handleOnDrag(e, "girlfriend?")}
                 >
-                    Widget F
+                    girlfriend?
+                </div>
+                <div
+                    className="widget4"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "wife?")}
+                >
+                    wife?
+                </div>
+                <div
+                    className="widget4"
+                    draggable
+                    onDragStart={(e) => handleOnDrag(e, "partner?")}
+                >
+                    partner?
                 </div>
             </div>
             <div className="page" onDrop={handleOnDrop4} onDragOver={handleDragOver}>
