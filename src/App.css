@@ -15,18 +15,21 @@
 
 .App-header {
     width: 100%;
-    background-color: #b563ec;
+    background-color: rgb(255, 239, 241);
     min-height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-size: calc(10px + 2vmin);
-    color: white;
 }
 
 .App-link {
     color: #61dafb;
+}
+
+body{
+    background-color: rgb(255, 239, 241);
 }
 
 p{
@@ -42,28 +45,28 @@ p{
 }
 
 .widget{
-    background-color: lightblue;
+    background-color: lightcyan;
     border: 2px solid gray;
     margin-bottom: 15px;
     margin-left: 10px;
 }
 
 .widget2{
-    background-color: lightblue;
+    background-color: lightcyan;
     border: 2px solid gray;
     margin-bottom: 15px;
     margin-left: 10px;
 }
 
 .widget3{
-    background-color: lightblue;
+    background-color: lightcyan;
     border: 2px solid gray;
     margin-bottom: 15px;
     margin-left: 10px;
 }
 
 .widget4{
-    background-color: lightblue;
+    background-color: lightcyan;
     border: 2px solid gray;
     margin-bottom: 15px;
     margin-left: 10px;
@@ -113,7 +116,7 @@ p{
     display: flex;
     border: 2px dashed gray;
     padding: 20px;
-    background-color: aqua;
+    background-color: lightcyan;
     text-align: center;
     flex-direction: row;
     gap: 10px;
