@@ -64,13 +64,11 @@ int main(int argc, char* argv[])
 	cout << "End of Tests!" << endl;
 	
 	//*/
-	//Actual Setences
-	/*
+	//Setence 1
 	int num1;
 	int num2;
 	int decision;
 	int targetSize = 3;
-	
 	WordBlock sentence1Word0 = 		WordBlock("A good computer scientist", 0);
 	WordBlock sentence1Word1Bad = 	WordBlock("does his or her", 1, 0);
 	WordBlock sentence1Word1Ok = 	WordBlock("does their", 1, 1);
@@ -88,6 +86,7 @@ int main(int argc, char* argv[])
 	{
 		cout << "Current Sentence: " << sentence1.getSentenceAsString() << endl;
 		cout << "Word Bank: " << sentence1.getWordBankAsString() << endl;
+		
 		if (sentence1.isInOrder())
 		{
 			cout << "Is In Order! 	";
@@ -112,6 +111,7 @@ int main(int argc, char* argv[])
 		{
 			cout << "Wrong Size!" << endl;
 		}
+		
 		cout << "0: Swap 2 Blocks" << endl << "1: Remove a block" << endl << "2: Add a block from word bank" << endl;
 		cin >> decision;
 		if(decision == 0)
@@ -126,7 +126,7 @@ int main(int argc, char* argv[])
 		{
 			cout << "Input block to remove" << endl;
 			cin >> num1;
-			if(num1 >= sentence1.getSize())
+			if(num1 >= sentence1.getSize() || num1 < 0)
 			{
 				cout << "Index out of bounds!" << endl;
 			}
@@ -145,7 +145,7 @@ int main(int argc, char* argv[])
 			{
 				cout << "Input block to add" << endl;
 				cin >> num1;
-				if(num1 < sentence1.getWordBankSize())
+				if(num1 < sentence1.getWordBankSize() && num1 >= 0)
 				{
 					WordBlock temp = sentence1.getWordAtIndexInBank(num1);
 					sentence1.removeBlockFromBank(temp);
@@ -162,7 +162,6 @@ int main(int argc, char* argv[])
 	}
 	cout << sentence1.getSentenceAsString() << endl;
 	cout << "Completed Sentence 1!" << endl;
-	//*/
 	
 	return 1;
 }

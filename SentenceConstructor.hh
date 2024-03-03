@@ -166,24 +166,8 @@ void SentenceConstructor::removeBlockFromBank(WordBlock word)
  */
 void SentenceConstructor::swapBlocks(int blockOne, int blockTwo)
 {
-	/*
-	int firstBlockLocation = -1;
-	int secondBlockLocation = -1;
-	//Gets the location of the two blocks in the array 
-	for(int i = 0; i<size; i++)
-	{
-		if(words[i].getPlaceOrder() == blockOrderOne)
-		{
-			firstBlockLocation = i;
-		}
-		if(words[i].getPlaceOrder() == blockOrderTwo)
-		{
-			secondBlockLocation = i;
-		}
-	}
-	*/
 	//If given bad indexes, or the same index, do nothing 
-	if(blockOne == blockTwo || blockOne >= size || blockTwo >= size)
+	if(blockOne == blockTwo || blockOne >= size || blockTwo >= size || blockOne < 0 || blockTwo < 0)
 	{
 		return;
 	}
@@ -192,8 +176,6 @@ void SentenceConstructor::swapBlocks(int blockOne, int blockTwo)
 	words[blockOne] = words[blockTwo];
 	words[blockTwo] = temp;
 }
-
-
 
 /* Gets all the block parts into one full string
  * Adds a space in between each block
