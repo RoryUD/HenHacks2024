@@ -4,13 +4,13 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 import axios from "axios";
 
 function App(): JSX.Element {
-    const [randomNumber, setRandomNumber] = useState<number | null>(null);
+    const [responseText, setResponseText] = useState<string>("");
 
     const handleClick = () => {
         axios.get("http://localhost:3000/homepage")
             .then(response => {
-                const { randomNumber } = response.data;
-                setRandomNumber(randomNumber);
+                const { message } = response.data;
+                setResponseText(message);
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -26,7 +26,6 @@ function App(): JSX.Element {
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload. Also im Alex Hoy, Hello World.
-                {randomNumber}
             </p>
             <Container>
                 <Row>
@@ -57,11 +56,11 @@ function App(): JSX.Element {
                 </Row>
             </Container>
             <Button onClick={handleClick}>
-                Get Random Number from C++ Backend
+                Get Message from C++ Backend
             </Button>
-            {randomNumber !== null && (
-                <p>Random Number: {randomNumber}</p>
-            )}
+            <p> {responseText && (
+                <div>Message: {responseText}</div>
+            )}</p>
         </div>
     );
 }
