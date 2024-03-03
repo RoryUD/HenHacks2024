@@ -10,14 +10,10 @@ using namespace std;
 
 /* 	To Do:
  * 	Back End:
- * 		Replace() for word bank (swaps bank and sentence wordBlocks)
- * 		Create 10 ish sentences
- * 		Add progression through the sentences
- * 		Hint Button (?)
+ * 		Create 5 ish sentences
  * 	Front End:
- * 		Reset Button for each sentence
  * 		Make multiple examples 
- * 		Give guidance and example text 
+ * 		Give guidance and example text before every widgit list 
  * 		Make it look pretty 
  * 	Compiler Call: 
  *  	g++ main.cpp SentenceConstructor.hh -o main
