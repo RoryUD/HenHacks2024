@@ -64,29 +64,32 @@ function App(): JSX.Element {
                 Interactive Examples to enhance language for diversity:
             </header>
             <p>
-                Placeholder Paragraph
+                This site is designed to teach you about gendered langauge!
+				You can move parts of sentences around to rewrite a give sentence to not include gendered language.
+				This first sentence is about removing gendered pronouns without having to rewrite the sentence fully.
+				Here is the first sentence: A good computer scientist does his or her job efficently
             </p>
             <div className="widgets">
                 <div
                     className="widget"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget A")}
+                    onDragStart={(e) => handleOnDrag(e, "A good computer scientist")}
                 >
-                    Widget A
+                    A good computer scientist
                 </div>
                 <div
                     className="widget"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget B")}
+                    onDragStart={(e) => handleOnDrag(e, "does his or her")}
                 >
-                    Widget B
+                    does his or her
                 </div>
                 <div
                     className="widget"
                     draggable
-                    onDragStart={(e) => handleOnDrag(e, "Widget C")}
+                    onDragStart={(e) => handleOnDrag(e, "job efficently")}
                 >
-                    Widget C
+                    job efficently
                 </div>
             </div>
             <div className="page" onDrop={handleOnDrop} onDragOver={handleDragOver}>
