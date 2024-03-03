@@ -45,6 +45,33 @@
     display: flex;
 }
 
+.widgets2 {
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    flex-direction: row;
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.widgets3 {
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    flex-direction: row;
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.widgets4 {
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    flex-direction: row;
+    flex-flow: row wrap;
+    display: flex;
+}
+
 .dropped-widget {
     gap: 100px;
 }
@@ -61,6 +88,8 @@
         align: right;
     }
 }
+
+
 
 .button-container {
     margin-left: auto;
