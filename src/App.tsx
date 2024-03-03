@@ -265,7 +265,10 @@ function App(): JSX.Element {
             </div>
 
             <p>
-                Placeholder shmext
+                Here is a final sentence that combines everything used so far.
+				<div>
+					A
+				</div>
             </p>
 
             <div className="widgets4">
@@ -305,7 +308,13 @@ function App(): JSX.Element {
                 </div>
             </div>
             <p style={{padding: 25}}>
-                Placeholder paragaph
+                In conclusion, you can see the many ways gendered langauge is used in everyday communication.
+				<div>
+				When writing, you can use the techniques you learned above to make your writing more inclusive.
+				</div>
+				<div>
+				:)
+				</div>
             </p>
         </div>
     );

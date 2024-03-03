@@ -229,6 +229,16 @@ int main(int argc, char* argv[])
 	*/
 	
 	/*
+	Here is a final sentence that combines everything used so far.
+	
+	*/
+	
+	/*
+	Conclusion
+	
+	In conclusion, you can see the many ways gendered langauge is used in everyday communication.
+	When writing, you can use the techniques you learned above to make your writing more inclusive.
+	:)
 	
 	*/
 	
